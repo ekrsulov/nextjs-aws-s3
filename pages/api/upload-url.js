@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     secretAccessKey: process.env.SECRET_KEY,
     region: process.env.REGION,
     endpoint: "https://yenda.sfo3.digitaloceanspaces.com",
-    signatureVersion: 'v3',
+    signatureVersion: 'v4',
   });
 
   const s3 = new aws.S3();
