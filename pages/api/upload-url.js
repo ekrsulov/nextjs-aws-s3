@@ -13,13 +13,13 @@ export default async function handler(req, res) {
   const post = await s3.createPresignedPost({
     Bucket: process.env.BUCKET_NAME,
     Fields: {
+      acl: 'public-read',
       key: req.query.file,
     },
     Expires: 60, // seconds
     Conditions: [
       ['content-length-range', 0, 1048576], // up to 1 MB
     ],
-    ACL: 'public-read',
   });
 
   res.status(200).json(post);
